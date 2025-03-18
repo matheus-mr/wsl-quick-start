@@ -1,4 +1,4 @@
-# wsl-quick-start
+# WSL quick start Ubuntu
 
 ## Install WSL
 ```
@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade -y
 
 ## Install basic packages
 ```
-sudo apt-get install wget ca-certificates curl git unzip jq coreutils build-essential \
+sudo apt-get install wget ca-certificates curl git unzip jq apt-transport-https software-properties-common coreutils build-essential \
 build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
@@ -87,6 +87,29 @@ asdf plugin-add python
 ```
 
 ## Docker
+Install docker
+```
+sudo install -m 0755 -d /etc/apt/keyrings
+```
+```
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+```
+```
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+```
+sudo apt-get update -y
+```
+```
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
 No sudo needed for docker commands
 ```
 sudo usermod -aG docker $USER
