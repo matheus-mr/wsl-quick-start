@@ -110,6 +110,11 @@ sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 ```
 
+Verify docker installation
+```
+sudo docker run hello-world
+```
+
 No sudo needed for docker commands
 ```
 sudo usermod -aG docker $USER
