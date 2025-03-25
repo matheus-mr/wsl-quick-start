@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade -y
 
 ## Install basic packages
 ```
-sudo apt-get install wget ca-certificates curl git unzip jq apt-transport-https software-properties-common coreutils build-essential \
+sudo apt-get install bash-completion net-tools wget ca-certificates curl git unzip jq apt-transport-https software-properties-common coreutils build-essential \
 build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
@@ -117,5 +117,69 @@ sudo docker run hello-world
 
 No sudo needed for docker commands
 ```
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER && newgrp docker
+```
+
+## Kubernetes
+# Install minikube
+```
+curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+```
+```
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+```
+
+Set docker as default driver
+```
+minikube config set driver docker
+```
+
+Shutdown wsl and then open it again
+```
+wsl --shutdown
+```
+
+Verify minikube is working and start cluster, this may take a while
+```
+minikube version
+```
+```
+minikube start
+```
+```
+minikube status
+```
+# Install kubectl
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
+```
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && rm kubectl
+```
+Verify it's installed
+```
+kubectl version --client
+```
+Configure auto completion, edit file
+```
+sudo nano ~/.bashrc
+```
+Add to the end
+```
+source <(kubectl completion bash)
+```
+Reload
+```
+source ~/.bashrc
+```
+Alias k to kubectl
+```
+alias k=kubectl
+```
+Verify it's working, if not restart minikube
+```
+kubectl get nodes
+```
+```
+kubectl get pod -A
 ```
