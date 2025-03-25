@@ -174,7 +174,7 @@ source ~/.bashrc
 ```
 Alias k to kubectl
 ```
-alias k=kubectl
+echo "alias k='kubectl'" >> ~/.bashrc && source ~/.bashrc
 ```
 Verify it's working, if not restart minikube
 ```
