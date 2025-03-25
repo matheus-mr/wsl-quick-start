@@ -149,6 +149,17 @@ minikube start
 ```
 minikube status
 ```
+Setup dashboard
+```
+minikube addons enable metrics-server
+```
+```
+minikube addons enable dashboard
+```
+Start dashboard when needed
+```
+minikube dashboard
+```
 # Install kubectl
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
