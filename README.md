@@ -81,9 +81,25 @@ Add java plugin
 ```
 asdf plugin add java https://github.com/halcyon/asdf-java.git
 ```
+Install JDK 21
+```
+asdf install java zulu-21.42.21
+```
+Set JDK 21 to global
+```
+asdf global java zulu-21.42.21
+```
 Add python plugin
 ```
 asdf plugin-add python
+```
+Install python version
+```
+asdf install python 3.13.3
+```
+Set python version to global
+```
+asdf global python 3.13.3
 ```
 
 ## Docker
